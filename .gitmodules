@@ -1,3 +1,6 @@
 [submodule "soci"]
 	path = soci
 	url = https://github.com/SOCI/soci.git
+[submodule "poco"]
+	path = poco
+	url = https://github.com/pocoproject/poco.git
