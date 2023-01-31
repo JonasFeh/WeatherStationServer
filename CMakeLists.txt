@@ -1,16 +1,6 @@
-﻿# CMakeList.txt : CMake project for WeatherStationServer, include source and define
-# project specific logic here.
-#
-cmake_minimum_required (VERSION 3.12)
+﻿cmake_minimum_required(VERSION 3.14)
 
-project ("WeatherStationServer")
-
-message("Project name is: ${PROJECT_NAME}")
-
-# Add source to this project's executable.
-set(CMAKE_CXX_STANDARD 20)
-
-find_package(SOCI REQUIRED)
+project(WeatherStationServer)
 
 # Add source files
 file(GLOB_RECURSE SOURCES "src/*.cpp" "src/*.h")
@@ -23,8 +13,19 @@ foreach(file ${SOURCES})
     source_group("src\\${group}" FILES ${file})
 endforeach()
 
-# Add executable
-add_executable(${PROJECT_NAME} ${SOURCES})
+# Create an executable target for your project
+add_executable(WeatherStationServer ${SOURCES})
 
-# Link SOCI library to executable
-target_link_libraries(${PROJECT_NAME} SOCI::core SOCI::odbc)
+# Add POCO
+add_subdirectory(Poco)
+
+# Target headers
+target_include_directories(${PROJECT_NAME} 
+    PUBLIC Poco/include)
+
+# Target libraries
+target_link_directories(${PROJECT_NAME} 
+    PRIVATE Poco/src)
+
+# Link licraries
+target_link_libraries(${PROJECT_NAME} Poco)

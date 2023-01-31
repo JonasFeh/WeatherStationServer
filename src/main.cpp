@@ -1,12 +1,9 @@
-﻿// WeatherStationServer.cpp : Defines the entry point for the application.
-//
-
-#include "WeatherStationServer.h"
+﻿#include <iostream>
 
 using namespace std;
 
 int main()
 {
-	cout << "Hello CMake." << endl;
+	std::cout << "Hello CMake." << std::endl;
 	return 0;
 }
